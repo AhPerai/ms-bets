@@ -25,6 +25,6 @@ public class TeamModel {
     @ManyToMany(mappedBy = "teams")
     private Set<EventModel> events;
 
-    @OneToMany(mappedBy = "result", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "winner", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<EventResultModel> wonEvents;
 }

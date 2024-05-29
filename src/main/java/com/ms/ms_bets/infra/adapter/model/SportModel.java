@@ -25,9 +25,9 @@ public class SportModel {
 
     private int expected_match_time;
 
-    @OneToMany(mappedBy = "team", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "sport", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<TeamModel> teams;
 
-    @OneToMany(mappedBy = "event", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(mappedBy = "sport", cascade = CascadeType.REMOVE, orphanRemoval = true)
     private Set<EventModel> events;
 }
