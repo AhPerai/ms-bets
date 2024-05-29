@@ -1,0 +1,55 @@
+name: Pipeline for Tests and Deploy Automation in Java
+
+on:
+  push:
+    branches: [ main, development ]
+  pull_request:
+    branches: [ main, development ]
+  workflow_call:
+
+env:
+  SERVER_PORT: ${{ vars.SERVER_PORT}}
+  DATABASE_NAME: ${{ vars.DATABASE_NAME}}
+  DATABASE_USER: ${{ vars.DATABASE_USER}}
+  DATABASE_PASSWORD: ${{ vars.DATABASE_PASSWORD}}
+  AMQP_URL: ${{ vars.AMQP_URL }}
+
+jobs:
+  tests_job:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres
+        env:
+          POSTGRES_DB: ${{env.DATABASE_NAME}}
+          POSTGRES_PASSWORD: ${{env.DATABASE_PASSWORD}}
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+
+      - name: Build with Maven
+        run: |
+          mvn -B clean package --file pom.xml
+
+      - name: Upload jar file
+        uses: actions/upload-artifact@v4
+        with:
+          name: msbets
+          path: target/*.jar
+          retention-days: 10
