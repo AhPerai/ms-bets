@@ -2,11 +2,13 @@ package com.ms.ms_bets.api.assembler;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.record.RecordModule;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class MapperDTO {
     private ModelMapper modelMapper;
 
