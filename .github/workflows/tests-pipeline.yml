@@ -1,8 +1,6 @@
 name: Pipeline for Tests and Deploy Automation in Java
 
 on:
-  push:
-    branches: [ main, development ]
   pull_request:
     branches: [ main, development ]
   workflow_call:
