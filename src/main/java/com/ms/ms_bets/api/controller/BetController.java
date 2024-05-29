@@ -25,8 +25,8 @@ public class BetController {
     public BetDTO createBet(@RequestBody BetInputDTO betInputDTO){
         var bet = mapper.transform(betInputDTO, Bet.class);
 
-        var betDTO = mapper.transform(bet, BetDTO.class);
+        bet = betService.addBet(bet);
 
-        return betDTO;
+        return mapper.transform(bet, BetDTO.class);
     }
 }

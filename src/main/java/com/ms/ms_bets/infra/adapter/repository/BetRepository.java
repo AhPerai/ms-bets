@@ -6,10 +6,12 @@ import com.ms.ms_bets.domain.model.Event;
 import com.ms.ms_bets.domain.port.repository.BetRepositoryPort;
 import com.ms.ms_bets.infra.adapter.model.BetModel;
 import com.ms.ms_bets.infra.adapter.model.EventModel;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
 
+@Component
 public class BetRepository implements BetRepositoryPort {
 
     private final MapperDTO mapper;
