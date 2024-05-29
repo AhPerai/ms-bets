@@ -27,6 +27,7 @@ public class BetController {
 
         bet = betService.addBet(bet);
 
-        return mapper.transform(bet, BetDTO.class);
+        var betdto = mapper.transform(bet, BetDTO.class);
+        return betdto;
     }
 }

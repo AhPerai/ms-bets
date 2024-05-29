@@ -27,7 +27,7 @@ public class BetModel {
     private EventResultModel result;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(nullable = false)
+    @JoinColumn(nullable = true)
     private EventModel event;
 
     private float odds;
