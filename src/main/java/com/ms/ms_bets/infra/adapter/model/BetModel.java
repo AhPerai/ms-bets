@@ -31,6 +31,7 @@ public class BetModel {
     private EventModel event;
 
     private float odds;
+    private double amount;
 
     @Enumerated(EnumType.STRING)
     private BetStatus status;

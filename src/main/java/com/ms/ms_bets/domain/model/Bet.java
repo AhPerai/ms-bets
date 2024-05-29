@@ -8,16 +8,18 @@ public class Bet {
     private EventResult result;
     private Event event;
     private float odds;
+    private double amount;
     private BetStatus status;
 
     public Bet() {}
 
-    public Bet(Long id, Long idUser, EventResult result, Event event, float odds, BetStatus status) {
+    public Bet(Long id, Long idUser, EventResult result, Event event, float odds, double amount, BetStatus status) {
         this.id = id;
         this.idUser = idUser;
         this.result = result;
         this.event = event;
         this.odds = odds;
+        this.amount = amount;
         this.status = status;
     }
 
@@ -59,6 +61,14 @@ public class Bet {
 
     public void setOdds(float odds) {
         this.odds = odds;
+    }
+
+    public double getAmount() {
+        return amount;
+    }
+
+    public void setAmount(double amount) {
+        this.amount = amount;
     }
 
     public BetStatus getStatus() {
