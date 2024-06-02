@@ -30,4 +30,9 @@ public class BetController {
         var betdto = mapper.transform(bet, BetDTO.class);
         return betdto;
     }
+
+    @GetMapping("/{betId}")
+    public BetDTO findById(@PathVariable Long betId){
+        return mapper.transform(betService.findBetById(betId), BetDTO.class);
+    }
 }
