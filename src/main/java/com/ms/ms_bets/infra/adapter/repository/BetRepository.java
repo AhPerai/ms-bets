@@ -33,7 +33,7 @@ public class BetRepository implements BetRepositoryPort {
 
     @Override
     public Optional<Bet> findById(Long id) {
-        var betModel = betRepositoryAccess.findById(id.intValue());
+        var betModel = betRepositoryAccess.findById(id);
         if(betModel.isEmpty()) return Optional.empty();
 
         var bet = mapper.transform(betModel, Bet.class);
